@@ -1,0 +1,37 @@
+{
+  "dependencies": {
+    "joi": "^17.6.0",
+    "koa": "^2.13.4",
+    "koa-body": "^5.0.0",
+    "koa-router": "^10.1.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@types/koa": "^2.13.4",
+    "@types/koa-router": "^7.4.4",
+    "@types/node": "^17.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "dotenv": "^16.0.0",
+    "eslint": "^8.11.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.5",
+    "prettier": "^2.5.1",
+    "ts-node-dev": "^1.1.8",
+    "tsconfig-paths": "^3.13.0",
+    "typescript": "^4.6.2"
+  },
+  "version": "0.1.0",
+  "description": "",
+  "name": "analyser",
+  "scripts": {
+    "prepare": "husky install",
+    "start": "tsnd --respawn --transpile-only -r tsconfig-paths/register src/index.ts",
+    "build": "tsc",
+    "eslint": "eslint . --ext ts --ignore-path .gitignore",
+    "eslint:fix": "eslint --fix . --ext ts --ignore-path .gitignore",
+    "prettier": "prettier --check . --ignore-path .gitignore",
+    "prettier:fix": "prettier --write . --ignore-path .gitignore"
+  }
+}
