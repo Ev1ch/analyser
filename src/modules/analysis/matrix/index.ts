@@ -108,6 +108,21 @@ class Matrix {
     return [this.data.length, this.data[0]?.length ?? 0];
   }
 
+  public getSum() {
+    let sum = 0;
+
+    for (let i = 0; i < this.data.length; i++) {
+      const row = this.data[i];
+
+      for (let j = 0; j < row.length; j++) {
+        const element = row[j];
+        sum += element;
+      }
+    }
+
+    return sum;
+  }
+
   public transpose() {
     const transposedData: Row[] = [];
 
