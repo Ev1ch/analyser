@@ -1,8 +1,4 @@
 class Range {
-  /**
-   * R
-   * @param data
-   */
   constructor(private data: number[] = []) {}
 
   public getMinimum() {
