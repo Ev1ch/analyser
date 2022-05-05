@@ -7,3 +7,5 @@ export type Tuple<
 export type Row = number[];
 
 export type Column = Tuple<number, 1>[];
+
+export type Modifier = (element: number, i: number, j: number) => number;

@@ -1,5 +1,5 @@
 import { MatrixError, MATRIX_ERROR_MESSAGES } from './error';
-import { Column, Row, Tuple } from './types';
+import { Column, Modifier, Row, Tuple } from './types';
 
 class Matrix {
   constructor(private data: Row[]) {}
@@ -52,6 +52,20 @@ class Matrix {
     }
 
     return new Matrix(data);
+  }
+
+  public static forEachElement(matrix: Matrix, modifier: Modifier) {
+    const modifiedMatrix = matrix.clone();
+
+    for (let i = 0; i < modifiedMatrix.getHeight(); i++) {
+      for (let j = 0; j < modifiedMatrix.getWidth(); j++) {
+        const element = modifiedMatrix.get(i, j);
+
+        modifiedMatrix.set(modifier(element, i, j), i, j);
+      }
+    }
+
+    return modifiedMatrix;
   }
 
   public isSquared() {
