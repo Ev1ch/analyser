@@ -1,4 +1,4 @@
-import { MatrixError, MATRIX_ERROR_MESSAGES } from './error';
+import { MatrixError } from './error';
 import { Column, Modifier, Row, Tuple } from './types';
 
 class Matrix {
@@ -30,17 +30,17 @@ class Matrix {
     return new Matrix(data);
   }
 
-  public static createNumber(size: number, number: number) {
-    if (size < 1) {
-      throw new MatrixError();
+  public static createNumber(dimention: number, number: number) {
+    if (dimention < 1) {
+      throw new MatrixError('Wrong dimetion specified');
     }
 
     const data: Row[] = [];
 
-    for (let i = 0; i < size; i++) {
+    for (let i = 0; i < dimention; i++) {
       const row: Row = [];
 
-      for (let j = 0; j < size; j++) {
+      for (let j = 0; j < dimention; j++) {
         if (i === j) {
           row.push(number);
         } else {
@@ -152,7 +152,7 @@ class Matrix {
       !this.isCoordinateCorrect(i, this.getHeight) ||
       !this.isCoordinateCorrect(j, this.getWidth)
     ) {
-      throw new MatrixError();
+      throw new MatrixError('Wrong coordinates specified');
     }
 
     this.data[i][j] = element;
@@ -162,7 +162,7 @@ class Matrix {
 
   public getRow(i: number) {
     if (!this.isCoordinateCorrect(i, this.getHeight)) {
-      throw new MatrixError();
+      throw new MatrixError('Wrong row specified');
     }
 
     return this.data[i];
@@ -170,7 +170,7 @@ class Matrix {
 
   public getColumn(j: number) {
     if (!this.isCoordinateCorrect(j, this.getWidth)) {
-      throw new MatrixError();
+      throw new MatrixError('Wrong column specified');
     }
 
     const column: Column = [];
@@ -190,7 +190,7 @@ class Matrix {
       !this.isCoordinateCorrect(i1, this.getHeight) ||
       i2 < i1
     ) {
-      throw new MatrixError();
+      throw new MatrixError('Wrong rows range specified');
     }
 
     const rows: Row[] = [];
@@ -210,7 +210,7 @@ class Matrix {
       !this.isCoordinateCorrect(j1, this.getWidth) ||
       j2 < j1
     ) {
-      throw new MatrixError();
+      throw new MatrixError('Wrong columns range specified');
     }
 
     const columns: number[][] = [];
@@ -259,7 +259,7 @@ class Matrix {
 
   public preppendRow(row: Row) {
     if (!this.canRowBeAdded(row)) {
-      throw new MatrixError();
+      throw new MatrixError('Matrix is empty or wrong row dimention');
     }
 
     this.data.unshift(row);
@@ -269,7 +269,7 @@ class Matrix {
 
   public appendRow(row: Row) {
     if (!this.canRowBeAdded(row)) {
-      throw new MatrixError();
+      throw new MatrixError('Matrix is empty or wrong row dimention');
     }
 
     this.data.push(row);
@@ -279,7 +279,7 @@ class Matrix {
 
   public preppendColumn(column: Column) {
     if (!this.canColumnBeAdded(column)) {
-      throw new MatrixError();
+      throw new MatrixError('Matrix is empty or wrong column dimention');
     }
 
     for (let i = 0; i < column.length; i++) {
@@ -292,7 +292,7 @@ class Matrix {
 
   public appendColumn(column: Column) {
     if (!this.canColumnBeAdded(column)) {
-      throw new MatrixError();
+      throw new MatrixError('Matrix is empty or wrong column dimention');
     }
 
     for (let i = 0; i < column.length; i++) {
@@ -305,7 +305,7 @@ class Matrix {
 
   public multiply(matrix: Matrix) {
     if (this.getWidth() !== matrix.getHeight()) {
-      throw new MatrixError();
+      throw new MatrixError('Wrong multiplicand dimentions');
     }
 
     const data: number[][] = [];
@@ -331,7 +331,7 @@ class Matrix {
 
   public add(matrix: Matrix) {
     if (!this.haveSameDimentions(matrix)) {
-      throw new MatrixError();
+      throw new MatrixError('Wrong summand dimentions');
     }
 
     for (let i = 0; i < this.getHeight(); i++) {
@@ -347,7 +347,7 @@ class Matrix {
 
   public subtract(matrix: Matrix) {
     if (!this.haveSameDimentions(matrix)) {
-      throw new MatrixError();
+      throw new MatrixError('Wrong subtractor dimentions');
     }
 
     for (let i = 0; i < this.getHeight(); i++) {
@@ -375,7 +375,7 @@ class Matrix {
 
   private multiplyRows(a: Row, b: Row) {
     if (a.length !== b.length) {
-      throw new MatrixError();
+      throw new MatrixError('Wrong multiplicand dimentions');
     }
 
     let sum = 0;
