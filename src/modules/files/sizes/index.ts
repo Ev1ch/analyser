@@ -1,10 +1,12 @@
 class FileSizes {
-  public getMbFromB(bytes: number) {
-    return bytes / 1024;
+  private static unitsNumber = 1024;
+
+  public static getMbFromB(bytes: number) {
+    return bytes / this.unitsNumber;
   }
 
-  public getBFromMb(megabytes: number) {
-    return megabytes * 1024;
+  public static getBFromMb(megabytes: number) {
+    return megabytes * this.unitsNumber;
   }
 }
 
