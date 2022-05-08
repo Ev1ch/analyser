@@ -1,33 +1,25 @@
 import { Context } from 'koa';
 import { File } from 'formidable';
-import { AnalysisService } from 'services';
-import { FileSizes, FilesReader } from 'modules/files';
-import { DATA_CONFIG } from 'configs/analysis';
-import { AnalysisSchema } from './schemas';
-
-class ValidationError extends Error {}
+import {
+  DataService,
+  FilesService,
+  OptionsService,
+  AnalysisService,
+} from 'services';
 
 class AnalysisController {
-  private filesReader = new FilesReader();
-  private fileSizes = new FileSizes();
   private analysisService = new AnalysisService();
+  private optionsService = new OptionsService();
+  private filesService = new FilesService();
+  private dataService = new DataService();
 
   public async getAnalysis(ctx: Context) {
     try {
-      const file = ctx.request.files?.data as File;
-      const options = ctx.request.body;
+      const file = ctx.request.files?.data as File | undefined;
 
-      if (!this.isFileValid(file)) {
-        throw new ValidationError('File');
-      }
-
-      console.log(options);
-
-      if (!this.areOptionsValid(options)) {
-        throw new ValidationError('Options');
-      }
-
-      const data = await this.filesReader.readCsv(file.path);
+      const options = this.optionsService.getOptions(ctx.request.body.options);
+      const content = await this.filesService.getContent(file, {});
+      const data = this.dataService.getData(content);
       const analysis = this.analysisService.getAnalysis(data, options);
 
       ctx.body = analysis;
@@ -36,24 +28,6 @@ class AnalysisController {
         error: error.message,
       };
     }
-  }
-
-  private isFileValid(file: File) {
-    if (this.fileSizes.getMbFromB(file.size) > DATA_CONFIG.maximumFileSize) {
-      return false;
-    }
-
-    return true;
-  }
-
-  private areOptionsValid(options: unknown) {
-    const { error } = AnalysisSchema.validate(options);
-
-    if (error) {
-      return false;
-    }
-
-    return true;
   }
 }
 
