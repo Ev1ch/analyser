@@ -5,6 +5,10 @@ class FileSizes {
     return bytes / this.unitsNumber;
   }
 
+  public static getKbFromMb(megabytes: number) {
+    return this.getBFromMb(megabytes) * this.unitsNumber;
+  }
+
   public static getBFromMb(megabytes: number) {
     return megabytes * this.unitsNumber;
   }
