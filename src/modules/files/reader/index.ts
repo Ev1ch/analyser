@@ -1,27 +1,16 @@
 import { createReadStream } from 'fs';
 
-interface IReadCsvOptions {
-  delimiter: string;
-  endOfLine: string;
-}
-
 export default class FilesReader {
-  public async readCsv(
-    filepath: string,
-    options: IReadCsvOptions = {
-      delimiter: ',',
-      endOfLine: '\n',
-    },
-  ) {
+  public async readCsv(filepath: string, delimiter: string) {
     const content = await this.readFile(filepath);
-    const rows = content.split(options.endOfLine);
+    const rows = content.replace(/\r\n/g, '\n').split('\n');
     const fixedRows: string[][] = [];
 
     for (let i = 0; i < rows.length; i++) {
       const row = rows[i];
 
       if (row.trim().length !== 0) {
-        fixedRows.push(rows[i].split(options.delimiter));
+        fixedRows.push(rows[i].split(delimiter));
       }
     }
 
