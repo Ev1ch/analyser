@@ -11,9 +11,13 @@ class Normalization {
       for (let j = 0; j < n; j++) {
         const range = ranges[j];
         const element = feature.get(i, j);
-        const normalizedElement = this.getNormalizedElement(element, range);
 
-        feature.set(normalizedElement, i, j);
+        if (range.hasOnlySameNumbers()) {
+          feature.set(element, i, j);
+        } else {
+          const normalizedElement = this.getNormalizedElement(element, range);
+          feature.set(normalizedElement, i, j);
+        }
       }
     }
   }
