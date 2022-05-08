@@ -16,7 +16,6 @@ class AnalysisController {
   public async getAnalysis(ctx: Context) {
     try {
       const file = ctx.request.files?.data as File | undefined;
-
       const options = this.optionsService.getOptions(ctx.request.body.options);
       const content = await this.filesService.getContent(file, options.file);
       const data = this.dataService.getData(content);
