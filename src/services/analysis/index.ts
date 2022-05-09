@@ -28,8 +28,6 @@ class AnalysisService {
     if (options.data.shouldNormalize) {
       const normalization = new Normalization();
       normalization.normalize(X);
-
-      console.log(X);
     }
 
     const Y = new Matrix(matrix.getColumn(options.data.y));
