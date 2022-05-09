@@ -1,5 +1,5 @@
 import { File } from 'formidable';
-import { FILE_CONFIG } from 'configs/analysis';
+import { FILES_CONFIG } from 'configs';
 import { FilesReader } from 'modules/files';
 import IFileOptions from 'schemas/file/type';
 
@@ -11,11 +11,12 @@ class FilesService {
       throw new Error('File is not present');
     }
 
-    if (file.size > FILE_CONFIG.SIZE.maximum) {
+    if (file.size > FILES_CONFIG.size.maximum) {
       throw new Error('File is too large');
     }
 
-    const preparedOptions = options?.delimiter || FILE_CONFIG.DELIMITER.initial;
+    const preparedOptions =
+      options?.delimiter || FILES_CONFIG.delimiter.initial;
     const content = await this.reader.readCsv(file.filepath, preparedOptions);
 
     return content;
