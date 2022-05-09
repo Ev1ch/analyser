@@ -1,3 +1,0 @@
-const HYPOTHESIS_ERROR_MESSAGES = {};
-
-export default HYPOTHESIS_ERROR_MESSAGES;

@@ -14,20 +14,15 @@ class Range {
   }
 
   public hasOnlySameNumbers() {
-    const map: Record<number, number> = {};
-
-    for (let i = 0; i < this.data.length; i++) {
-      const number = this.data[i];
-
-      if (map[number]) {
-        map[number]++;
-      } else {
-        map[number] = 1;
-      }
+    if (this.data.length === 0) {
+      return true;
     }
 
-    if (Object.keys(map).length > 1) {
-      return false;
+    const number = this.data[0];
+    for (let i = 1; i < this.data.length; i++) {
+      if (number !== this.data[i]) {
+        return false;
+      }
     }
 
     return true;
