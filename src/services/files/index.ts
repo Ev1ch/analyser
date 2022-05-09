@@ -1,7 +1,7 @@
 import { File } from 'formidable';
 import { FILE_CONFIG } from 'configs/analysis';
 import { FilesReader } from 'modules/files';
-import { IFileOptions } from 'controllers/analysis/types';
+import IFileOptions from 'schemas/file/type';
 
 class FilesService {
   private reader = new FilesReader();

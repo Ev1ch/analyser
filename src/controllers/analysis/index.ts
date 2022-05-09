@@ -24,7 +24,7 @@ class AnalysisController {
       ctx.body = analysis;
     } catch (error) {
       ctx.body = {
-        error: error.message,
+        error: (error as Error)?.message || 'Unknow error occured',
       };
     }
   }

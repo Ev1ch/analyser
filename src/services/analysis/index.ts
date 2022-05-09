@@ -1,5 +1,5 @@
 import Matrix from 'modules/analysis/matrix';
-import { IAnalysisOptions } from 'controllers/analysis/types';
+import IAnalysisOptions from 'schemas/analysis/type';
 import { GRADIENT_CONFIG } from 'configs/analysis';
 import { Column, Row } from 'modules/analysis/matrix/types';
 import GradientDescent from 'modules/analysis/gradient-descent';

@@ -1,5 +1,5 @@
-import { AnalysisSchema } from 'controllers/analysis/schemas';
-import { IAnalysisOptions } from 'controllers/analysis/types';
+import { AnalysisSchema } from 'schemas';
+import IAnalysisOptions from 'schemas/analysis/type';
 
 class OptionsService {
   public getOptions(options: unknown) {
