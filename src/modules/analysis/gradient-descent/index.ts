@@ -8,39 +8,39 @@ class GradientDescent {
     private normalizingRate?: number,
   ) {}
 
-  public run(Theta: Matrix, X: Matrix, Y: Matrix) {
-    let currentTheta = Theta;
+  public run(theta: Matrix, X: Matrix, y: Matrix) {
+    let currentTheta = theta;
     for (let i = 0; i < this.iterationsNumber; i++) {
-      currentTheta = this.getUpdatedTheta(currentTheta, X, Y);
+      currentTheta = this.getUpdatedTheta(currentTheta, X, y);
     }
 
     return currentTheta;
   }
 
-  private getUpdatedTheta(Theta: Matrix, X: Matrix, Y: Matrix) {
-    const m = Y.getHeight();
+  private getUpdatedTheta(theta: Matrix, X: Matrix, y: Matrix) {
+    const m = y.getHeight();
 
-    const hypothesis = this.hypothesis.calculateMatrix(Theta, X);
-    const error = Matrix.substract(hypothesis, Y);
+    const hypothesis = this.hypothesis.calculateMatrix(theta, X);
+    const error = Matrix.substract(hypothesis, y);
     const sum = Matrix.multiply(Matrix.transpose(X), error);
     const k = Matrix.createNumber(sum.getHeight(), this.learningRate / m);
 
     if (this.normalizingRate) {
       const normalization = Matrix.createNumber(
-        Theta.getHeight(),
+        theta.getHeight(),
         this.normalizingRate / m,
       );
 
       return Matrix.substract(
-        Theta,
+        theta,
         Matrix.add(
           Matrix.multiply(k, sum),
-          Matrix.multiply(normalization, Theta),
+          Matrix.multiply(normalization, theta),
         ),
       );
     }
 
-    return Matrix.substract(Theta, Matrix.multiply(k, sum));
+    return Matrix.substract(theta, Matrix.multiply(k, sum));
   }
 }
 

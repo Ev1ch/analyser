@@ -16,10 +16,10 @@ class AnalysisService {
     const gradientDescent = this.getGradientDescent(options.gradient);
 
     const X = this.getX(matrix, options.data);
-    const Y = new Matrix(matrix.getColumn(options.data.y));
-    const Theta = this.getTheta(X, options.gradient);
+    const y = new Matrix(matrix.getColumn(options.data.y));
+    const theta = this.getTheta(X, options.gradient);
 
-    return gradientDescent.run(Theta, X, Y);
+    return gradientDescent.run(theta, X, y);
   }
 
   private getGradientDescent(options?: IGradientOptions) {

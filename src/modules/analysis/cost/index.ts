@@ -5,15 +5,15 @@ class Cost {
   constructor(private normalizingRate?: number) {}
 
   public calculate(
-    Theta: Matrix,
+    theta: Matrix,
     X: Matrix,
-    Y: Matrix,
+    y: Matrix,
     h: HypothesisFunction<Matrix>,
   ) {
-    const m = Y.getHeight();
+    const m = y.getHeight();
 
-    const hypothesis = h(Theta, X);
-    const difference = Matrix.substract(hypothesis, Y);
+    const hypothesis = h(theta, X);
+    const difference = Matrix.substract(hypothesis, y);
     const k = 1 / (2 * m);
     const sum = Matrix.multiply(Matrix.transpose(difference), difference).get(
       0,
@@ -22,7 +22,7 @@ class Cost {
 
     if (this.normalizingRate) {
       const error = k * sum;
-      const squaredTheta = Matrix.forEachElement(Theta, (element) =>
+      const squaredTheta = Matrix.forEachElement(theta, (element) =>
         Math.pow(element, 2),
       );
       const normalization =
