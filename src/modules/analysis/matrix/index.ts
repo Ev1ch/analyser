@@ -122,6 +122,10 @@ class Matrix {
     return sum;
   }
 
+  public getData() {
+    return this.data;
+  }
+
   public transpose() {
     const transposedData: Row[] = [];
 
