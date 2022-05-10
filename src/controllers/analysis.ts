@@ -21,7 +21,9 @@ class AnalysisController {
       const data = this.dataService.getData(content);
       const analysis = this.analysisService.getAnalysis(data, options);
 
-      ctx.body = analysis;
+      ctx.body = {
+        theta: analysis.getData(),
+      };
     } catch (error) {
       ctx.body = {
         error: (error as Error)?.message || 'Unknow error occured',
