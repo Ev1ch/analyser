@@ -7,6 +7,7 @@ const FILES_CONFIG = {
   delimiter: {
     initial: ',',
   },
+  extentions: ['csv'],
 };
 
 export default FILES_CONFIG;

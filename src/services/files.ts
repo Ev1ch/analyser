@@ -11,6 +11,11 @@ class FilesService {
       throw new Error('File is not present');
     }
 
+    const fileExtention = file.originalFilename.split('.').at(-1)!;
+    if (!FILES_CONFIG.extentions.includes(fileExtention)) {
+      throw new Error('File has wrong extention');
+    }
+
     if (file.size > FILES_CONFIG.size.maximum) {
       throw new Error('File is too large');
     }
