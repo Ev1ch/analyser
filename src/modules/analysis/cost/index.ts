@@ -1,4 +1,4 @@
-import Matrix from 'modules/analysis/matrix';
+import { Matrix } from 'modules/analysis';
 import { HypothesisFunction } from './types';
 
 class Cost {

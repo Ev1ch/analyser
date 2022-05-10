@@ -1,5 +1,4 @@
-import Matrix from 'modules/analysis/matrix';
-import Range from 'modules/analysis/range';
+import { Matrix, Range } from 'modules/analysis';
 
 class Normalization {
   public normalize(feature: Matrix) {

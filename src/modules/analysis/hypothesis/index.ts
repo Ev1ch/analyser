@@ -1,4 +1,4 @@
-import Matrix from 'modules/analysis/matrix';
+import { Matrix } from 'modules/analysis';
 
 class Hypothesis {
   public calculate(theta: Matrix, x: Matrix) {

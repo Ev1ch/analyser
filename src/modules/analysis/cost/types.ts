@@ -1,4 +1,4 @@
-import Matrix from 'modules/analysis/matrix';
+import { Matrix } from 'modules/analysis';
 
 export type HypothesisFunction<T extends number | Matrix = number> = (
   Theta: Matrix,

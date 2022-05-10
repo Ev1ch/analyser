@@ -1,10 +1,13 @@
-import Matrix from 'modules/analysis/matrix';
-import IAnalysisOptions from 'schemas/analysis/type';
 import { GRADIENT_CONFIG } from 'configs';
 import { Column, Row } from 'modules/analysis/matrix/types';
-import GradientDescent from 'modules/analysis/gradient-descent';
-import Normalization from 'modules/analysis/normalization';
-import Hypothesis from 'modules/analysis/hypothesis';
+import {
+  GradientDescent,
+  Normalization,
+  Hypothesis,
+  Matrix,
+} from 'modules/analysis';
+import IAnalysisOptions from 'schemas/analysis/type';
+import IGradientOptions from 'schemas/gradient/type';
 
 class AnalysisService {
   public getAnalysis(data: Row[], options: IAnalysisOptions) {

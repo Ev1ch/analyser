@@ -1,5 +1,4 @@
-import Matrix from 'modules/analysis/matrix';
-import Hypothesis from 'modules/analysis/hypothesis';
+import { Matrix, Hypothesis } from 'modules/analysis';
 
 class GradientDescent {
   constructor(
