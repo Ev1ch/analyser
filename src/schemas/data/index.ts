@@ -4,7 +4,7 @@ import IDataOptions from './type';
 
 const START_ARRAY_INDEX = 0;
 const END_ARRAY_INDEX =
-  DATA_CONFIG.values.maximumNumber + DATA_CONFIG.values.maximumNumber - 1;
+  DATA_CONFIG.features.maximumNumber + DATA_CONFIG.values.maximumNumber - 1;
 
 const DataSchema = Joi.object<IDataOptions>()
   .keys({
