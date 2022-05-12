@@ -11,8 +11,8 @@ class FilesService {
       throw new Error('File is not present');
     }
 
-    const fileExtention = file.originalFilename.split('.').at(-1)!;
-    if (!FILES_CONFIG.extentions.includes(fileExtention)) {
+    const fileExtention = file.originalFilename?.split('.').at(-1);
+    if (!fileExtention || !FILES_CONFIG.extentions.includes(fileExtention)) {
       throw new Error('File has wrong extention');
     }
 
