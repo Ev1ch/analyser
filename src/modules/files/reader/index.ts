@@ -1,6 +1,6 @@
 import { createReadStream } from 'fs';
 
-export default class FilesReader {
+class FilesReader {
   public async readCsv(filepath: string, delimiter: string) {
     const content = await this.readFile(filepath);
     const rows = content.replace(/\r\n/g, '\n').split('\n');
@@ -35,3 +35,5 @@ export default class FilesReader {
     });
   }
 }
+
+export default FilesReader;
