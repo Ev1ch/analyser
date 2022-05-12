@@ -1,8 +1,8 @@
 import Joi from 'joi';
-import FileSchema from '../file';
-import DataSchema from '../data';
-import GradinetSchema from '../gradient';
-import CostSchema from '../cost';
+import FileSchema from 'schemas/file';
+import DataSchema from 'schemas/data';
+import GradinetSchema from 'schemas/gradient';
+import CostSchema from 'schemas/cost';
 import IAnalysisOptions from './type';
 
 const AnalysisSchema = Joi.object<IAnalysisOptions>().keys({

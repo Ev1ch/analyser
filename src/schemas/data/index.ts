@@ -1,6 +1,6 @@
 import Joi from 'joi';
-import IDataOptions from './type';
 import { DATA_CONFIG } from 'configs';
+import IDataOptions from './type';
 
 const START_ARRAY_INDEX = 0;
 const END_ARRAY_INDEX =

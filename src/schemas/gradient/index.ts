@@ -1,6 +1,6 @@
 import Joi from 'joi';
-import IGradientOptions from './type';
 import { GRADIENT_CONFIG } from 'configs';
+import IGradientOptions from './type';
 
 const GradinetSchema = Joi.object<IGradientOptions>()
   .keys({

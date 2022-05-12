@@ -1,6 +1,6 @@
 import Joi from 'joi';
-import ICostOptions from './type';
 import { COST_CONFIG } from 'configs';
+import ICostOptions from './type';
 
 const CostSchema = Joi.object<ICostOptions>()
   .keys({
