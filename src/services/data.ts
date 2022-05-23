@@ -35,7 +35,7 @@ class DataService {
 
       for (let j = 0; j < data[i].length; j++) {
         const element = data[i][j];
-        const isIncluded = options.data.x.includes(j);
+        const isIncluded = options.data.x.includes(j) || options.data.y === j;
 
         if (isIncluded) {
           if (!this.isNumber(element)) {
