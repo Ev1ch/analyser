@@ -35,14 +35,19 @@ class DataService {
 
       for (let j = 0; j < data[i].length; j++) {
         const element = data[i][j];
+        const isIncluded = options.data.x.includes(j);
 
-        if (!this.isNumber(element)) {
-          throw new Error(
-            `${j + 1}th element on ${i + 1}th row has wrong format`,
-          );
+        if (isIncluded) {
+          if (!this.isNumber(element)) {
+            throw new Error(
+              `${j + 1}th element on ${i + 1}th row has wrong format`,
+            );
+          }
+
+          row.push(Number(element));
+        } else {
+          row.push(NaN);
         }
-
-        row.push(Number(element));
       }
 
       preparedData.push(row);
