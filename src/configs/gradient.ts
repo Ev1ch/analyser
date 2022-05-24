@@ -12,12 +12,12 @@ const GRADIENT_CONFIG = {
   learningRate: {
     minimum: 0.001,
     initial: 0.01,
-    maximum: 10,
+    maximum: 1,
   },
   normalizingRate: {
     minimum: 0.001,
     initial: 0.01,
-    maximum: 10,
+    maximum: 1,
   },
 };
 
