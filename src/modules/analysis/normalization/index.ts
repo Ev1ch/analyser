@@ -3,15 +3,24 @@ import { Matrix, Range } from 'modules/analysis';
 class Normalization {
   public normalize(X: Matrix) {
     const ranges = this.getRanges(X);
-    for (let i = 0; i < X.getHeight(); i++) {
-      for (let j = 0; j < X.getWidth(); j++) {
-        const range = ranges[j];
+
+    for (let j = 0; j < X.getWidth(); j++) {
+      const range = ranges[j];
+      const average = range.getAverage();
+      const s = range.getRange();
+      const hasOnlySameNumbers = range.hasOnlySameNumbers();
+
+      for (let i = 0; i < X.getHeight(); i++) {
         const element = X.get(i, j);
 
-        if (range.hasOnlySameNumbers()) {
+        if (hasOnlySameNumbers) {
           X.set(element, i, j);
         } else {
-          const normalizedElement = this.getNormalizedElement(element, range);
+          const normalizedElement = this.getNormalizedElement(
+            element,
+            average,
+            s,
+          );
           X.set(normalizedElement, i, j);
         }
       }
@@ -36,8 +45,12 @@ class Normalization {
     return ranges;
   }
 
-  private getNormalizedElement(element: number, range: Range) {
-    return (element - range.getAverage()) / range.getStandartDeviation();
+  private getNormalizedElement(
+    element: number,
+    average: number,
+    range: number,
+  ) {
+    return (element - average) / range;
   }
 }
 
