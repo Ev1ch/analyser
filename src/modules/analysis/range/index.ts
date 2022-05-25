@@ -28,6 +28,10 @@ class Range {
     return true;
   }
 
+  public getRange() {
+    return this.getMaximum() - this.getMinimum();
+  }
+
   public getStandartDeviation() {
     const n = this.data.length;
 
